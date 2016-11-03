@@ -1,0 +1,8 @@
+{% ckan_extends %}
+
+{% block resource_item_title %}
+   {{ super() }}
+   {% block classification %}
+         <span class="label ab_security_{{ res.classification }}" ><i class="label label-info" ></i>{{ _(res.classification) }}</span>
+   {% endblock %}
+{% endblock %}
