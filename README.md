@@ -13,8 +13,8 @@ the user.
 Requirements
 ------------
 
-Ckan-2.6
-ckanext-scheming
+    Ckan-2.6
+    ckanext-scheming
 
 ------------
 Installation
@@ -64,22 +64,22 @@ Usage
 
 1. Put this block into your json schema file (field names are fixed).
 
-     {
-      "field_name": "classification",
-      "label": "Security Classification",
-      "help_text": "The classification which is used upon this resource",
-      "help_inline": false,
-      "required": true,
-      "validators": "scheming_required",
-      "form_snippet": "classification.html",
-      "choices": [
-        {"value": "1", "label": "1"},
-        {"value": "2", "label": "2"},
-        {"value": "3", "label": "3"},
-        {"value": "4", "label": "4"},
-        {"value": "5", "label": "5"}
-      ]
-    }
+        {
+        "field_name": "classification",
+        "label": "Security Classification",
+        "help_text": "The classification which is used upon this resource",
+        "help_inline": false,
+        "required": true,
+        "validators": "scheming_required",
+        "form_snippet": "classification.html",
+        "choices": [
+          {"value": "1", "label": "1"},
+          {"value": "2", "label": "2"},
+          {"value": "3", "label": "3"},
+          {"value": "4", "label": "4"},
+          {"value": "5", "label": "5"}
+        ]
+        }
 
 --------
 Notice
