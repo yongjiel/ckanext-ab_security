@@ -81,6 +81,11 @@ Usage
         ]
         }
 
+2. Go to organization management page, you can find a tag named "Resource Classification".
+Config the users in there. And back to package and create or edit a resource. The classification
+of that resource will be controlled in the range that is defined in the config.
+
+
 --------
 Notice
 --------

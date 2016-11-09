@@ -77,6 +77,8 @@ def get_org(package_string):
 
 
 def get_current_user_id():
+	if not toolkit.c.userobj:
+		return None
 	return toolkit.c.userobj.id
 
 
@@ -86,6 +88,8 @@ def is_admin(user, org):
                 org : name or id,
         rtype: boolean
     """
+    if not user:
+    	return False 
     username = model.User.get(user).name
     user_id = model.User.get(user).id
     if authz.is_sysadmin(username):
