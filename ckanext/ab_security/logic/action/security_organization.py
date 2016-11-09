@@ -22,7 +22,7 @@ def _query_Member(user_id='', group_id=''):
         user_object = model.User.get(user_id)
         org_object = model.Group.get(group_id)
         raise NotFound(
-            _("User \"{0}\" is is not a member".format(user_object.name) + 
+            _("User \"{0}\" is not a member".format(user_object.name) +  
               " of organization \"{0}\".".format(org_object.name) +
               " User has to be an active editor first"+
               " before authorized for work flow.")

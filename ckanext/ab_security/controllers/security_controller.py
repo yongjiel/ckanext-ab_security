@@ -3,6 +3,7 @@ from ckan.common import _, request, c
 import ckan.lib.helpers as helpers
 import ckan.model as model
 import ckan.plugins.toolkit as toolkit
+from ckan import model
 
 
 class SecurityClassificationController(base.BaseController):
@@ -57,13 +58,17 @@ class SecurityClassificationController(base.BaseController):
 
         if toolkit.request.method == 'POST':
             if username:
-                self._action('security_member_create', 
+                user_object = model.User.get(username)
+                if not user_object:
+                    helpers.flash_error("User \"{0}\" not exist!".format(username))
+                else:
+                    self._action('security_member_create', 
                              context, 
                              username, 
                              groupname, 
                              dataset_type,
                              classification,
-                             "User \"{0}\" is now an Member of Security".format(username))
+                             "User \"{0}\" is now a Member of Security on type \"{1}\"".format(username, dataset_type))
             else:
                 helpers.flash_error("Please input username first.")
             return toolkit.redirect_to(toolkit.url_for(controller=controller,
@@ -100,7 +105,7 @@ class SecurityClassificationController(base.BaseController):
                          groupname, 
                          dataset_type,
                          classification,
-                         "User \"{0}\" is no longer an Member of Security".format(username))
+                         "User \"{0}\" is no longer a Member of Security on type \"{1}\"".format(username, dataset_type))
 
         return toolkit.redirect_to(
                 helpers.url_for(controller=controller, action='manage', id=id))
