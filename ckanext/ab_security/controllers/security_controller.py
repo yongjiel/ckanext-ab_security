@@ -3,7 +3,6 @@ from ckan.common import _, request, c
 import ckan.lib.helpers as helpers
 import ckan.model as model
 import ckan.plugins.toolkit as toolkit
-from ckan import model
 
 
 class SecurityClassificationController(base.BaseController):
