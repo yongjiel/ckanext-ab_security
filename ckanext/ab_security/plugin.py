@@ -87,10 +87,13 @@ class Ab_SecurityPlugin(plugins.SingletonPlugin):
             classification = 1
         resources = []
         for res in pkg_dict['resources']:
-        	if res:
-        		classif = res.get('classification')
-        		if classif and classif <= classification or not classif:
-        			resources.append(res)
+            if res:
+                classif = res.get('classification')
+                if classif and classif <= classification or not classif:
+                    # set up classification for old dataset with no classification field
+                    if not classif:
+                        res['classification'] = 1
+                    resources.append(res)
         pkg_dict['resources'] = resources
         return pkg_dict
         
