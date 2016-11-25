@@ -96,4 +96,21 @@ class Ab_SecurityPlugin(plugins.SingletonPlugin):
                     resources.append(res)
         pkg_dict['resources'] = resources
         return pkg_dict
+
+    def before_view(self, pkg_dict):
+        #handle old data with no classification field
+        flag_no_classification = False
+        resources = []
+        for res in pkg_dict['resources']:
+            if res:
+                classif = res.get('classification')
+                # set up classification for old dataset with no classification field
+                if not classif:
+                    res['classification'] = 1
+                    flag_no_classification = True
+                resources.append(res)
+        pkg_dict['resources'] = resources
+        if flag_no_classification: 
+            toolkit.get_action('package_update')(data_dict=pkg_dict)
+        return pkg_dict
         

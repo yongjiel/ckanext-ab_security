@@ -69,8 +69,6 @@ Usage
         "label": "Security Classification",
         "help_text": "The classification which is used upon this resource",
         "help_inline": false,
-        "required": true,
-        "validators": "scheming_required",
         "form_snippet": "classification.html",
         "choices": [
           {"value": "1", "label": "1"},
